@@ -1,19 +1,37 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $subject = htmlspecialchars($_POST['subject']);
+    $message = htmlspecialchars($_POST['message']);
 
-    $to = "kianprimeroots@gmail.com"; // Replace with your email address
-    $subjectLine = "Message from: " . $name . " - " . $subject;
-    $body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-    $headers = "From: $email";
+    $to = "your-email@gmail.com"; // Replace with your Gmail address
+    $headers = "From: $email\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "Content-Type: text/html\r\n";
 
-    if (mail($to, $subjectLine, $body, $headers)) {
-        echo "Message sent successfully!";
+    $body = "
+    <h2>New Message From Your Website</h2>
+    <p><strong>Name:</strong> $name</p>
+    <p><strong>Email:</strong> $email</p>
+    <p><strong>Subject:</strong> $subject</p>
+    <p><strong>Message:</strong></p>
+    <p>$message</p>
+    ";
+
+    // Send email
+    if (mail($to, $subject, $body, $headers)) {
+        echo "<script>
+        alert('Message sent successfully!');
+        window.location.href = 'contact.html'; // Redirect to your contact page
+        </script>";
     } else {
-        echo "Sorry, something went wrong. Please try again later.";
+        echo "<script>
+        alert('Failed to send message. Please try again later.');
+        window.location.href = 'contact.html'; // Redirect to your contact page
+        </script>";
     }
+} else {
+    echo "Invalid Request!";
 }
 ?>
