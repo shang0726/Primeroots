@@ -23,12 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mail($to, $subject, $body, $headers)) {
         echo "<script>
         alert('Message sent successfully!');
-        window.location.href = 'contact.html'; // Redirect to your contact page
+        window.location.href = 'contact.html'; 
         </script>";
     } else {
         echo "<script>
         alert('Failed to send message. Please try again later.');
-        window.location.href = 'contact.html'; // Redirect to your contact page
+        window.location.href = 'contact.html'; 
         </script>";
     }
 } else {
