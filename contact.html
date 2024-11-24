@@ -355,31 +355,33 @@
                     <div class="col-lg-6" data-aos="zoom-in" data-aos-duration="2000">
                         <div class="contact-content bg1-clr">
                             <h3 class="white mb-xxl-15 mb-xl-10 mb-lg-7 mb-5">
-                                Leave A Message (Under Maintenance)
+                                Leave A Message!
                             </h3>
-                            <form action="email.php" method="POST">
-                                <div class="row g-xxl-8 g-xl-6 g-lg-4 g-4">
-                                    <div class="col-lg-6">
-                                        <input type="text" name="name" placeholder="Name" required>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="email" name="email" placeholder="Email" required>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <select name="subject" required>
-                                            <option value="Inquiry">Inquiry</option>
-                                            <option value="Negotiation">Negotiation</option>
-                                            <option value="Purchase">Purchase</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <textarea name="message" rows="5" placeholder="Message" required></textarea>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <button type="submit" class="submit-btn">Send Message</button>
-                                    </div>
-                                </div>
-                            </form>
+                            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="98bb2a0f-aaca-40a7-94e6-0e94bb2a758a">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="col-lg-12">
+                        <select name="subject" required>
+                            <option value="Inquiry">Inquiry</option>
+                            <option value="Negotiation">Negotiation</option>
+                            <option value="Purchase">Purchase</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea name="message" rows="5" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="col-lg-5">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </div>
+                </div>
+                <input type="hidden" name="redirect" value="contact.html?success=true">
+            </form>
                             
                         </div>
                     </div>
@@ -673,6 +675,26 @@
     <span id="valiu"><i class="fas fa-arrow-up"></i></span>
 </div>
 <!-- Scroll Top End -->
+    <!-- Message Box -->
+    <div id="message-box" style="display: none;"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Handle success or error messages
+        const urlParams = new URLSearchParams(window.location.search);
+        const messageBox = document.getElementById('message-box');
+
+        if (urlParams.get('success') === 'true') {
+            messageBox.style.display = 'block';
+            messageBox.style.color = 'green';
+            messageBox.textContent = '✅ Your message was sent successfully!';
+        } else if (urlParams.get('error') === 'true') {
+            messageBox.style.display = 'block';
+            messageBox.style.color = 'red';
+            messageBox.textContent = '❌ Oops! There was an error submitting your message. Please try again.';
+        }
+    </script>
+
 
 <!-- js Jquery start -->
 <script src="assets/js/jquery.js"></script>
