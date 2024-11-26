@@ -915,21 +915,23 @@
         </section>
         <!-- Tab Case Study End -->
 
-        <div id="popupModal" class="popup-modal">
-            <div class="popup-content">
-                <span class="close-btn" onclick="closePopup()">&times;</span>
-                <h2>Get 20% off!</h2>
-                <p>Enter your email to enjoy exclusive discounts!</p>
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <!-- Web3Forms Access Key -->
-                    <input type="hidden" name="access_key" value="98bb2a0f-aaca-40a7-94e6-0e94bb2a758a">
-                    <!-- Redirect after submission -->
-                    <input type="hidden" name="redirect" value="index.html">
-                    <input type="email" name="email" placeholder="Enter your email" required>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-        </div>
+        <div id="popup-modal" class="popup-modal">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Subscribe Now!</h2>
+      <p>Join our newsletter to receive exclusive discounts and updates.</p>
+      <form id="popup-form" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms Hidden Fields -->
+        <input type="hidden" name="access_key" value="98bb2a0f-aaca-40a7-94e6-0e94bb2a758a" />
+        <input type="hidden" name="subject" value="New Newsletter Subscription" />
+        <input type="hidden" name="redirect" value="index.html" />
+
+        <!-- Email Input -->
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
 
     </main>
 
@@ -1244,20 +1246,19 @@
         });
 
     </script>
+ <script>
+    // Show the popup after 2 seconds
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            document.getElementById("popup-modal").style.display = "flex";
+        }, 2000);
+    });
 
-    
-        <!-- JS to Control Pop-Up -->
-        <script>
-            // Show pop-up after a delay
-            setTimeout(() => {
-                document.getElementById('popupModal').style.display = 'block';
-            }, 5000);
-    
-            // Close the pop-up
-            function closePopup() {
-                document.getElementById('popupModal').style.display = 'none';
-            }
-        </script>
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById("popup-modal").style.display = "none";
+    }
+  </script>
 
 </body>
 
