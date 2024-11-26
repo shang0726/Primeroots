@@ -4674,7 +4674,8 @@ input.main-search-input::placeholder {
 
   
 }/*# sourceMappingURL=main.css.map */
-/* Inline CSS for Popup */
+
+    /* Popup Modal Styles */
     body {
         margin: 0;
         font-family: 'Arial', sans-serif;
@@ -4728,6 +4729,7 @@ input.main-search-input::placeholder {
         border-radius: 5px;
         font-size: 16px;
         box-sizing: border-box;
+        color: #333;
     }
 
     form button {
