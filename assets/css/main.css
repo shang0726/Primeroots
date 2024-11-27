@@ -4720,6 +4720,17 @@ input.main-search-input::placeholder {
         color: #333;
         cursor: pointer;
     }
+.popup-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #00e1ff; /* Stylish blue for the heading */
+}
+
+.popup-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #000000;
+}
 
     /* Form */
     form input[type="email"] {
